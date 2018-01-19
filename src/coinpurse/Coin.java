@@ -1,9 +1,5 @@
 package coinpurse;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
 /**
  * Coin represents coinage (money) with a fixed value and currency. 
  * @author Pimwalun Witchawanitchanun
@@ -23,14 +19,27 @@ public class Coin implements Comparable<Coin>{
 		this.currency = currency;
 	}
 	
+	/**
+     * Get the value of coin. 
+     * @return the value of coin.
+     */
 	public double getValue(){
 		return this.value;
 	}
 	
+	/**
+     * Get the currency of coin.
+     * @return the currency of coin.
+     */
 	public String getCurrency(){
 		return this.currency;
 	}
 	
+	/**
+	 * Compare coin by currency and value.
+	 * @param arg is another Coin to compare to this one.
+	 * @return true if currency and value is same, false otherwise.
+	 */
 	public boolean equals(Object arg){
 		if(arg == null) return false;
 		if(arg.getClass() != this.getClass()) return false;
@@ -39,39 +48,28 @@ public class Coin implements Comparable<Coin>{
 		return false;
 	}
 	
+	/**
+     * Compare coin by value.
+     * @param coin is Coin objects we want to compare. 
+     * @return -1 if this coin has greater value.
+     */
 	@Override
 	public int compareTo(Coin coin){
-		if (this.currency.equals(coin.getCurrency())){
-			if (this.value > coin.getValue())
-				return 1;
-			if (this.value < coin.getValue())
-				return -1;
-			if (this.value == coin.getValue())
-				return 0;
+		if (this.currency.equalsIgnoreCase(coin.getCurrency())){
+			return (int) Math.signum(this.value - coin.getValue());
 		}
-		return this.currency.compareTo(coin.getCurrency());
+		if (this.currency == null && coin.getCurrency() == null){
+			return (int) Math.signum(this.value - coin.getValue());
+		}
+		return -1;
 	}
 	
+	/** 
+     * toString returns a string description of coin contents.
+     * @return whatever is a useful description.
+     */
 	@Override
 	public String toString(){
 		return this.value + "-" + this.currency;
 	}
-	
-	public static void printCoin(List<Coin> coins){
-		for (Coin coin : coins){
-			System.out.println(coin.getValue()+"-"+coin.getCurrency());
-		}
-	}
-	
-	public static void main(String[] args) {
-		List<Coin> coins = new ArrayList<Coin>();
-    	coins.add(new Coin(10.0, "Bath"));
-    	coins.add(new Coin(0.5, "Bath"));
-    	coins.add(new Coin(2.0, "Bath"));
-    	coins.add(new Coin(1.0, "Bath"));
-    	printCoin(coins);
-    	java.util.Collections.sort(coins);
-    	printCoin(coins);
-	}
-
 }

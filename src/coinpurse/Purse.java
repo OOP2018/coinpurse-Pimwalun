@@ -81,7 +81,7 @@ public class Purse {
     public boolean insert( Coin coin ) {
         // if the purse is already full then can't insert anything.
     	if (coin.getValue() <= 0) return false;
-    	if (money.size() != capacity){
+    	else if (!isFull()){
     		return money.add(coin);
     	}
         return false;
@@ -96,25 +96,24 @@ public class Purse {
 	 *    or null if cannot withdraw requested amount.
      */
     public Coin[] withdraw( double amount ) {
-    	List<Coin> templist = new ArrayList<Coin>();
-    	Coin [] array = new Coin[ templist.size() ];
-    	Collections.sort( money );
-    	Collections.reverse( money );
+    	List<Coin> templist = new ArrayList<>();
         if (amount < 0) return null;
-        if (getBalance() < amount) return null;
-        if (amount == 0) templist.toArray(array);
 		for (Coin coin : money) {
 			if (amount >= coin.getValue()){
 				amount -= coin.getValue();
 				templist.add(coin);
 			}
 		}
-		for (Coin coin : templist) {
-			money.remove(coin);
+		if (amount != 0) return null;
+		if (amount == 0) {
+			for (Coin coinToWithdraw : templist) {
+				money.remove(coinToWithdraw);
+			}
 		}
-        if (amount != 0) return null;
-        array = new Coin[templist.size()];
-        return array;
+		if (getBalance() < amount) return null;
+		Coin [] array = new Coin[templist.size()];
+		templist.toArray(array);
+        return array; 
 	}
   
     /** 
