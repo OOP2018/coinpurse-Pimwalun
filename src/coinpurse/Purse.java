@@ -97,6 +97,8 @@ public class Purse {
      */
     public Coin[] withdraw( double amount ) {
     	List<Coin> templist = new ArrayList<>();
+    	Collections.sort( money );
+    	Collections.reverse( money );
         if (amount < 0) return null;
 		for (Coin coin : money) {
 			if (amount >= coin.getValue()){
