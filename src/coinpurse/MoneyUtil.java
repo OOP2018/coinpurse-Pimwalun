@@ -53,15 +53,18 @@ public class MoneyUtil {
 	 */
 	public static void main(String[] args) {
 		List<Coin> coins = new ArrayList<Coin>();
-    	coins.add(new Coin(10.0, "Bath"));
-    	coins.add(new Coin(0.5, "Bath"));
-    	coins.add(new Coin(2.0, "Bath"));
+    	coins.add(new Coin(10.0, "Baht"));
+    	coins.add(new Coin(0.5, "Baht"));
+    	coins.add(new Coin(2.0, "Baht"));
     	coins.add(new Coin(10.0, "Dollar"));
-    	coins.add(new Coin(1.0, "Bath"));
+    	coins.add(new Coin(1.0, "Baht"));
     	coins.add(new Coin(1.0, "Dollar"));
+    	coins.add(new Coin(2.0, "ht"));
     	printCoin(coins);
     	java.util.Collections.sort(coins);
     	System.out.println("==========================");
     	printCoin(coins);
+    	System.out.println("==========================");
+    	System.out.println(filterByCurrency(coins, "Baht"));
 	}
 }
