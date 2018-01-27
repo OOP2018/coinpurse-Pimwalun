@@ -2,6 +2,7 @@ package coinpurse;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -14,15 +15,15 @@ public class MoneyUtil {
 	/**
 	 * Method that examines all the coins in a List and returns
 	 * only the coins that have a currency that matches the parameter value.
-	 * @param coins is a List of Coin objects. This list is not modified.
+	 * @param money is a List of Valuable objects. This list is not modified.
 	 * @param currency is the currency we want. Must not be null.
 	 * @return a new List containing only the elements from value list that have the requested currency.  
 	 */
-	public static List<Coin> filterByCurrency(List<Coin> coins, String currency) {
-		List<Coin> sameCurrency = new ArrayList<Coin>();
-		for (Coin coin : coins) {
-			if (coin.getCurrency().equals(currency)) {
-				sameCurrency.add(coin);
+	public static List<Valuable> filterByCurrency(List<Valuable> money, String currency) {
+		List<Valuable> sameCurrency = new ArrayList<Valuable>();
+		for (Valuable value : money) {
+			if (value.getCurrency().equals(currency)) {
+				sameCurrency.add(value);
 			}
 		}
 		return sameCurrency;
@@ -31,19 +32,19 @@ public class MoneyUtil {
 	/**
 	 * Method to sort a list of coin by currency.
 	 * On return, the list (coin) will be ordered by currency.
-	 * @param coins is a List of Coin objects we want to sort. 
+	 * @param values is a List of Coin objects we want to sort. 
 	 */
-	public static void sortCoins(List<Coin> coins) {
-		Collections.sort(coins);
+	public static void sortCoins(List<Valuable> values) {
+		Collections.sort(values, new ValueComparator());
 	}
 	
 	/**
 	 * Method to print the coin
-	 * @param coins is a List of Coin objects we want to print.
+	 * @param values is a List of Valuable objects we want to print.
 	 */
-	public static void printCoin(List<Coin> coins){
-		for (Coin coin : coins){
-			System.out.println(coin.getValue()+"-"+coin.getCurrency());
+	public static void printCoin(List<Valuable> values){
+		for (Valuable value : values){
+			System.out.println(value.getValue()+"-"+value.getCurrency());
 		}
 	}
 	
@@ -52,19 +53,19 @@ public class MoneyUtil {
 	 * @param args not used
 	 */
 	public static void main(String[] args) {
-		List<Coin> coins = new ArrayList<Coin>();
-    	coins.add(new Coin(10.0, "Baht"));
-    	coins.add(new Coin(0.5, "Baht"));
-    	coins.add(new Coin(2.0, "Baht"));
-    	coins.add(new Coin(10.0, "Dollar"));
-    	coins.add(new Coin(1.0, "Baht"));
-    	coins.add(new Coin(1.0, "Dollar"));
-    	coins.add(new Coin(2.0, "ht"));
-    	printCoin(coins);
-    	java.util.Collections.sort(coins);
+		List<Valuable> values = new ArrayList<Valuable>();
+    	values.add(new Coin(10.0, "Baht"));
+    	values.add(new Coin(0.5, "Baht"));
+    	values.add(new Coin(2.0, "Baht"));
+    	values.add(new Coin(10.0, "Dollar"));
+    	values.add(new Coin(1.0, "Baht"));
+    	values.add(new Coin(1.0, "Dollar"));
+    	values.add(new Coin(2.0, "ht"));
+    	printCoin(values);
+    	Collections.sort(values, new ValueComparator());
     	System.out.println("==========================");
-    	printCoin(coins);
+    	printCoin(values);
     	System.out.println("==========================");
-    	System.out.println(filterByCurrency(coins, "Baht"));
+    	System.out.println(filterByCurrency(values, "Baht"));
 	}
 }

@@ -5,7 +5,7 @@ package coinpurse;
  * @author Pimwalun Witchawanitchanun
  *
  */
-public class Coin implements Comparable<Coin>{
+public class Coin implements Valuable{
 	private double value;
 	private String currency;
 	
@@ -19,6 +19,7 @@ public class Coin implements Comparable<Coin>{
 		this.currency = currency;
 	}
 	
+	@Override
 	/**
      * Get the value of coin. 
      * @return the value of coin.
@@ -27,6 +28,7 @@ public class Coin implements Comparable<Coin>{
 		return this.value;
 	}
 	
+	@Override
 	/**
      * Get the currency of coin.
      * @return the currency of coin.
@@ -53,7 +55,6 @@ public class Coin implements Comparable<Coin>{
      * @param coin is Coin objects we want to compare. 
      * @return -1 if this coin has greater value.
      */
-	@Override
 	public int compareTo(Coin coin){
 		if (this.currency.equalsIgnoreCase(coin.getCurrency())){
 			return (int) Math.signum(this.value - coin.getValue());
