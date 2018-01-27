@@ -82,7 +82,14 @@ public class Purse {
         // if the purse is already full then can't insert anything.
     		if (value.getValue() <= 0) return false;
     		else if (!isFull()){
-    			return money.add(value);
+    			this.money.add(value);
+    			Collections.sort(money, new Comparator<Valuable>() {
+    				@Override
+    				public int compare(Valuable o1, Valuable o2) {
+    					return Double.compare(o1.getValue(), o2.getValue());
+    				}
+    			});
+    			return true;
     		}
     		return false;
     }

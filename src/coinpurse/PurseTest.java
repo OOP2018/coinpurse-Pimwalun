@@ -35,7 +35,7 @@ public class PurseTest {
     }
     
     /** Make a coin with the default currency. To save typing "new Coin(...)" */
-    private Valuable makeCoin(double value) {
+    private Coin makeCoin(double value) {
 		return new Coin(value,CURRENCY);
 	}
 
@@ -56,9 +56,9 @@ public class PurseTest {
     public void testInsert()
     {
         Purse purse = new Purse(3);
-        Valuable coin1 = makeCoin(5);
-        Valuable coin2 = makeCoin(10);
-        Valuable coin3 = makeCoin(1);
+        Coin coin1 = makeCoin(5);
+        Coin coin2 = makeCoin(10);
+        Coin coin3 = makeCoin(1);
         assertTrue( purse.insert(coin1));
         assertTrue( purse.insert(coin3));
         assertTrue( purse.insert(coin2));
@@ -73,7 +73,7 @@ public class PurseTest {
     public void testInsertNoValue()
     {
         Purse purse = new Purse(3);
-        Valuable fakeCoin = new Coin(0, CURRENCY);
+        Coin fakeCoin = new Coin(0, CURRENCY);
         assertFalse( purse.insert(fakeCoin) );
     }
 
@@ -106,7 +106,7 @@ public class PurseTest {
 		int capacity = 5;
 		double value = 10.0;
 		Purse purse = new Purse(capacity);
-		Valuable coin = new Coin(value, "THB");
+		Coin coin = new Coin(value, "THB");
 		assertTrue( purse.insert(coin) );
 		assertTrue( purse.insert(coin) ); // should be allowed
 		assertTrue( purse.insert(coin) ); // should be allowed
