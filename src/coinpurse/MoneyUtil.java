@@ -2,7 +2,6 @@ package coinpurse;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -35,7 +34,7 @@ public class MoneyUtil {
 	 * @param values is a List of Coin objects we want to sort. 
 	 */
 	public static void sortCoins(List<Valuable> values) {
-		Collections.sort(values, new ValueComparator());
+		Collections.sort(values,new ValueComparator());
 	}
 	
 	/**
@@ -54,18 +53,22 @@ public class MoneyUtil {
 	 */
 	public static void main(String[] args) {
 		List<Valuable> values = new ArrayList<Valuable>();
-    	values.add(new Coin(10.0, "Baht"));
-    	values.add(new Coin(0.5, "Baht"));
-    	values.add(new Coin(2.0, "Baht"));
-    	values.add(new Coin(10.0, "Dollar"));
-    	values.add(new Coin(1.0, "Baht"));
-    	values.add(new Coin(1.0, "Dollar"));
-    	values.add(new Coin(2.0, "ht"));
-    	printCoin(values);
-    	Collections.sort(values, new ValueComparator());
-    	System.out.println("==========================");
-    	printCoin(values);
-    	System.out.println("==========================");
-    	System.out.println(filterByCurrency(values, "Baht"));
+    		values.add(new Coin(10.0, "Baht"));
+    		values.add(new Coin(0.5, "Baht"));
+    		values.add(new Coin(2.0, "Baht"));
+    		values.add(new Coin(10.0, "Dollar"));
+    		values.add(new Coin(1.0, "Baht"));
+    		values.add(new Coin(1.0, "Dollar"));
+    		values.add(new Coin(2.0, "ht"));
+    		values.add(new BankNote(1000.0, "Baht"));
+    		values.add(new BankNote(50.0, "Baht"));
+    		values.add(new BankNote(100.0, "Baht"));
+    		values.add(new BankNote(20.0, "ht"));
+    		printCoin(values);
+    		Collections.sort(values);
+    		System.out.println("==========================");
+    		printCoin(values);
+    		System.out.println("==========================");
+    		System.out.println(filterByCurrency(values, "Baht"));
 	}
 }

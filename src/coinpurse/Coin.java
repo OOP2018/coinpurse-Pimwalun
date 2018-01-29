@@ -52,15 +52,15 @@ public class Coin implements Valuable{
 	
 	/**
      * Compare coin by value.
-     * @param coin is Coin objects we want to compare. 
+     * @param valuable is Coin objects we want to compare. 
      * @return -1 if this coin has greater value.
      */
-	public int compareTo(Coin coin){
-		if (this.currency.equalsIgnoreCase(coin.getCurrency())){
-			return (int) Math.signum(this.value - coin.getValue());
+	public int compareTo(Valuable valuable){
+		if (this.currency.equalsIgnoreCase(valuable.getCurrency())){
+			return (int) Math.signum(this.value - valuable.getValue());
 		}
-		if (this.currency == null && coin.getCurrency() == null){
-			return (int) Math.signum(this.value - coin.getValue());
+		if (this.currency == null && valuable.getCurrency() == null){
+			return (int) Math.signum(this.value - valuable.getValue());
 		}
 		return -1;
 	}
