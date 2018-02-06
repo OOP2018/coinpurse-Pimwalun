@@ -5,16 +5,27 @@ import java.util.Comparator;
 public class ValueComparator implements Comparator<Valuable> {
 	
 	/**
-	 * Compare 2 Valuable by currency
+	 * Compare two objects that implement Valuable.
+	 * First compare them by currency, so that "Baht" < "Dollar".
+	 * If both objects have the same currency, order them by value.
 	 * @param o1 is the first comparator
 	 * @param o2 is the second comparator
 	 * @return -1 if o1's currency come first 
-	 * 		0 if both of 2 have same currency
-	 * 		1 if o1's currency come after
+	 * 			1 if o1's currency come after
+	 * 		   	0 if both of 2 have same currency
+	 * 		   
 	 */
-	@Override
 	public int compare(Valuable o1, Valuable o2) {
-		return o1.getCurrency().compareToIgnoreCase(o2.getCurrency());
+		if (o1.getCurrency().charAt(0) < o2.getCurrency().charAt(0))
+			return -1;
+		else if (o1.getCurrency().charAt(0) == o2.getCurrency().charAt(0)) {
+			if (o1.getValue() < o2.getValue())
+				return -1;
+			else if (o1.getValue() > o2.getValue())
+				return 1;
+			return 0;
+		}	 
+		return 1;
 	}
 
 }

@@ -62,21 +62,6 @@ public class BankNote implements Valuable{
 		return false;
 	}
 	
-	/**
-     * Compare coin by value.
-     * @param valuable is Coin objects we want to compare. 
-     * @return -1 if this coin has greater value.
-     */
-	public int compareTo(Valuable valuable){
-		if (this.currency.equalsIgnoreCase(valuable.getCurrency())){
-			return (int) Math.signum(this.value - valuable.getValue());
-		}
-		if (this.currency == null && valuable.getCurrency() == null){
-			return (int) Math.signum(this.value - valuable.getValue());
-		}
-		return -1;
-	}
-	
 	/** 
      * Get a string representation of BankNote.
      * @return string representation of BankNote.

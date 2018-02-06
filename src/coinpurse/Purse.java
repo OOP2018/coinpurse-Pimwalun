@@ -17,7 +17,7 @@ import java.util.Comparator;
 public class Purse {
     /** Collection of objects in the purse. */
 	private List<Valuable> money = new ArrayList<Valuable>();
-	
+	private Comparator<Valuable> comp = new ValueComparator();
     
     /** Capacity is maximum number of items the purse can hold.
      *  Capacity is set when the purse is created and cannot be changed.
@@ -83,12 +83,7 @@ public class Purse {
     		if (value.getValue() <= 0) return false;
     		else if (!isFull()){
     			this.money.add(value);
-    			Collections.sort(money, new Comparator<Valuable>() {
-    				@Override
-    				public int compare(Valuable o1, Valuable o2) {
-    					return Double.compare(o1.getValue(), o2.getValue());
-    				}
-    			});
+    			Collections.sort(money, new ValueComparator());
     			return true;
     		}
     		return false;
@@ -104,7 +99,6 @@ public class Purse {
      */
     public Valuable[] withdraw( double amount ) {
     	List<Valuable> templist = new ArrayList<>();
-    	Comparator<Valuable> comp = new ValueComparator();
     	Collections.sort( money, comp);
     	Collections.reverse( money );
         if (amount < 0) return null;

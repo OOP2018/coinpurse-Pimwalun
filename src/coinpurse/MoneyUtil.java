@@ -65,7 +65,7 @@ public class MoneyUtil {
     		values.add(new BankNote(100.0, "Baht"));
     		values.add(new BankNote(20.0, "ht"));
     		printCoin(values);
-    		Collections.sort(values);
+    		Collections.sort(values, new ValueComparator());
     		System.out.println("==========================");
     		printCoin(values);
     		System.out.println("==========================");
