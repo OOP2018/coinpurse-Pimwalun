@@ -25,5 +25,4 @@ public class ValueComparator implements Comparator<Valuable> {
 		}	 
 		return o1.getCurrency().compareToIgnoreCase(o2.getCurrency());
 	}
-
 }
