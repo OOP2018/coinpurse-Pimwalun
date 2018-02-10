@@ -23,7 +23,7 @@ import org.junit.Test;
 public class PurseTest {
 	/** tolerance for comparing two double values */
 	private static final double TOL = 1.0E-6;
-	private static final String CURRENCY = "BTC";
+	private static final String CURRENCY = "Baht";
 	
     /**
      * Sets up the test fixture.
@@ -122,13 +122,13 @@ public class PurseTest {
 		double [] values = {1, 20, 0.5, 10}; // values of coins we will insert
 		
 		for(double value : values) {
-			Valuable coin = makeCoin(value);
-			assertTrue(purse.insert(coin));
+			Valuable money = makeCoin(value);
+			assertTrue(purse.insert(money));
 			assertEquals(value,  purse.getBalance(), TOL);
 			Valuable [] result = purse.withdraw(value);
 			assertTrue( result != null );
 			assertEquals( 1, result.length );
-			assertSame(  coin, result[0] ); // should be same object
+			assertSame(  money, result[0] ); // should be same object
 			assertEquals( 0, purse.getBalance(), TOL );
 		}
 	}
@@ -138,12 +138,12 @@ public class PurseTest {
 	@Test(timeout=1000)
 	public void testMultiWithdraw() {
 		Purse purse = new Purse(10);
-		Valuable[] coins = { makeCoin(5.0), makeCoin(10.0), makeCoin(1.0), makeCoin(5.0) };
+		Valuable[] values = { makeCoin(5.0), makeCoin(10.0), makeCoin(1.0), makeCoin(5.0) };
 		// insert them all
-		for(Valuable coin: coins) assertTrue( purse.insert(coin) );
+		for(Valuable value: values) assertTrue( purse.insert(value) );
 		
-		double amount1 = coins[1].getValue() + coins[3].getValue();
-		double amount2 = coins[0].getValue() + coins[2].getValue();
+		double amount1 = values[1].getValue() + values[3].getValue();
+		double amount2 = values[0].getValue() + values[2].getValue();
 		assertEquals(amount1+amount2, purse.getBalance(), TOL );
 		
 		Valuable [] wd1 = purse.withdraw(amount1);

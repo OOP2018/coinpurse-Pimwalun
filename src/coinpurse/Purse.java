@@ -83,7 +83,7 @@ public class Purse {
     		if (value.getValue() <= 0) return false;
     		else if (!isFull()){
     			this.money.add(value);
-    			Collections.sort(money, new ValueComparator());
+    			Collections.sort(money, comp);
     			return true;
     		}
     		return false;
@@ -98,24 +98,7 @@ public class Purse {
 	 *    or null if cannot withdraw requested amount.
      */
     public Valuable[] withdraw( double amount ) {
-    		List<Valuable> templist = new ArrayList<>();
-    		Collections.sort( money, comp);
-    		Collections.reverse( money );
-        if (amount < 0) return null;
-		for (Valuable value : money) {
-			if (amount >= value.getValue()){
-				amount -= value.getValue();
-				templist.add(value);
-			}
-		}
-		if (amount != 0) return null;
-		for (Valuable valueToWithdraw : templist) {
-			money.remove(valueToWithdraw);
-		}
-		if (getBalance() < amount) return null;
-		Valuable [] array = new Valuable[templist.size()];
-		templist.toArray(array);
-        return array; 
+    		return withdraw(new Money(amount, "Baht"));
 	}
     
     /**  
@@ -156,7 +139,7 @@ public class Purse {
     		return count() + " money with value " + getBalance();
     }
     
-//    public static void main(String[] args) {
+    public static void main(String[] args) {
 //		Purse p1 = new Purse(5);
 //		System.out.println(p1.insert(new BankNote(30,"B")));
 //		System.out.println(p1.insert(new BankNote(50,"B")));
@@ -166,5 +149,16 @@ public class Purse {
 //		System.out.println(p1.withdraw(new BankNote(50,"B")));
 //		System.out.println(p1.withdraw(new BankNote(30,"C")));
 //		System.out.println(p1.withdraw(new BankNote(20,"B")));
-//	}
+    	
+    	Purse purse = new Purse(10);
+    	  double[] values = { 1, 20, 0.5, 10 }; // values of coins we will insert
+
+    	  for (double value : values) {
+    	   Valuable coin = new Money(value, "Bath");
+    	   purse.insert(coin);
+    	   Valuable[] result = purse.withdraw(value);
+    	   System.out.println(result != null);
+
+    	  }
+	}
 }
