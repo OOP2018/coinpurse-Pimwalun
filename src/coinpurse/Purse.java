@@ -8,8 +8,8 @@ import java.util.Comparator;
 // You will use Collections.sort() to sort the coins
 
 /**
- *  A coin purse contains coins.
- *  You can insert coins, withdraw money, check the balance,
+ *  A purse contains money.
+ *  You can insert money, withdraw money, check the balance,
  *  and check if the purse is full.
  *  
  *  @author Pimwalun Witchawanitchanun
@@ -23,6 +23,7 @@ public class Purse {
      *  Capacity is set when the purse is created and cannot be changed.
      */
     private final int capacity;
+    private static final String CURRENCY = "Baht";
     
     /** 
      *  Create a purse with a specified capacity.
@@ -98,7 +99,7 @@ public class Purse {
 	 *    or null if cannot withdraw requested amount.
      */
     public Valuable[] withdraw( double amount ) {
-    		return withdraw(new Money(amount, "Baht"));
+    		return withdraw(new Money(amount, CURRENCY));
 	}
     
     /**  

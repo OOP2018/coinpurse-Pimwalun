@@ -65,10 +65,4 @@ public class Money implements Valuable{
 		if(this.currency.equalsIgnoreCase(money.currency) && this.value == money.value) return true;
 		return false;
 	}
-	
-//	public static void main(String[] args) {
-//		Money n = new Money(3, "A");
-//		Money m = new Money(4, "A");
-//		System.out.println(n.compareTo(m));
-//	}
 }
