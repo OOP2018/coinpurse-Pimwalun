@@ -23,7 +23,7 @@ public class BankNote extends Money {
 	 * Get the serial of banknote.
 	 * @return the serial of banknote.
 	 */
-	public long getSerialNumber() {
+	public long getSerial() {
 		return this.serialNumber;
 	}
 	
@@ -33,6 +33,6 @@ public class BankNote extends Money {
      */
 	@Override
 	public String toString(){
-		return getValue() + "-" + getCurrency() + " note [" + getSerialNumber() + "]";
+		return getValue() + "-" + getCurrency() + " note [" + getSerial() + "]";
 	}
 }
