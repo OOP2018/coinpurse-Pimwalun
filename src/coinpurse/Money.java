@@ -3,7 +3,6 @@ package coinpurse;
 /**
  * This class to provide the value, currency, getValue, and getCurrency for subclasses.
  * @author Pimwalun Witchawanitchanun
- *
  */
 public class Money implements Valuable{
 

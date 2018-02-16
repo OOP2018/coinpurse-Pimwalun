@@ -47,7 +47,6 @@ public class MoneyFactoryTest {
 
 	/**
 	 * Test method createMoney(double) in MoneyFactory
-	 * 
 	 */
 	@Test
 	public void testCreateMoneyThaiDouble() {

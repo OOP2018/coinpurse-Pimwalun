@@ -3,6 +3,10 @@ package coinpurse;
 import java.util.Comparator;
 import java.lang.Number;
 
+/**
+ * This class is compare two object that implement Valuable.
+ * @author Pimwalun Witchawanitchanun
+ */
 public class ValueComparator implements Comparator<Valuable> {
 	
 	/**

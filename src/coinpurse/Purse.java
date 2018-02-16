@@ -151,15 +151,14 @@ public class Purse {
 //		System.out.println(p1.withdraw(new BankNote(30,"C")));
 //		System.out.println(p1.withdraw(new BankNote(20,"B")));
     	
-    	Purse purse = new Purse(10);
-    	  double[] values = { 1, 20, 0.5, 10 }; // values of coins we will insert
+    		Purse purse = new Purse(10);
+    		double[] values = { 1, 20, 0.5, 10 }; // values of coins we will insert
 
-    	  for (double value : values) {
-    	   Valuable coin = new Money(value, "Bath");
-    	   purse.insert(coin);
-    	   Valuable[] result = purse.withdraw(value);
-    	   System.out.println(result != null);
-
-    	  }
+    		for (double value : values) {
+    			Valuable coin = new Money(value, "Bath");
+    			purse.insert(coin);
+    			Valuable[] result = purse.withdraw(value);
+    			System.out.println(result != null);
+    		}
 	}
 }

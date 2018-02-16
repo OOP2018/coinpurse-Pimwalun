@@ -8,6 +8,8 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import sun.awt.motif.MFontConfiguration;
+
 /**
  * Test the Purse using JUnit. This is a JUnit 4 test suite.
  * 
@@ -22,7 +24,8 @@ public class PurseTest {
 	/** tolerance for comparing two double values */
 	private static final double TOL = 1.0E-6;
 	private static final String CURRENCY = "Baht";
-
+	private static MoneyFactory mf = MoneyFactory.getInstance();
+	
 	/**
 	 * Sets up the test fixture. Called before every test method.
 	 */
@@ -31,9 +34,9 @@ public class PurseTest {
 		// nothing to initialize
 	}
 
+	/** Make a money with the default currency. */
 	private Valuable makeMoney(double value) {
-		Valuable money = MoneyFactory.getInstance().createMoney(value);
-		return money;
+		return mf.createMoney(value);
 	}
 	
 	/** Easy test that the Purse constructor is working. */
@@ -235,9 +238,7 @@ public class PurseTest {
 
 	/**
 	 * Sum the value of some coins.
-	 * 
-	 * @param value
-	 *            array of coins
+	 * @param value array of coins
 	 * @return sum of values of the coins
 	 */
 	private double sum(Valuable[] value) {

@@ -5,6 +5,10 @@ package coinpurse;
  * @author Pimwalun Witchawanitchanun
  */
 public class MoneyFactoryDemo {
+	
+	/**
+	 * This method it test that MoneyFactory is singleton and all the methods work as specified.
+	 */
 	public static void testMoneyFactory() {
 		MoneyFactory f1 = MoneyFactory.getInstance();
 		System.out.println("f1 is a " + f1.getClass().getName());

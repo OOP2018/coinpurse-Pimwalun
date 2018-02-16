@@ -1,14 +1,14 @@
 package coinpurse;
 
 /**
- * This class for creating money of other countries.
+ * This class for creating money of each countries.
  * @author Pimwalun Witchawanitchanun
  */
 public abstract class MoneyFactory {
 	private static MoneyFactory factory;
 	
 	/**
-	 * Returns an object of other countries.
+	 * Returns an object of each countries.
 	 * @return get an instance of MoneyFactory
 	 */
 	public static MoneyFactory getInstance() {

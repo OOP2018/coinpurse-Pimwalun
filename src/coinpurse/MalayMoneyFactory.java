@@ -3,12 +3,11 @@ package coinpurse;
 /**
  * This class create coin and banknote of Malaysia.
  * @author Pimwalun Witchawanitchanun
- *
  */
 public class MalayMoneyFactory extends MoneyFactory {
 	private static final String DEFAULT_CURRENCY = "Ringgit";
 	private static final String DIME_CURRENCY = "Sen";
-	protected long nextSerialNumber = 1000000;
+	private long nextSerialNumber = 1000000;
 	private double[] malayMoney = { 0.05, 0.10, 0.20, 0.50, 1, 2, 5, 10, 20, 50, 100 };
 
 	/**

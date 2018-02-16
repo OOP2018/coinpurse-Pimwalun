@@ -10,9 +10,7 @@ public class Main {
 
 	/**
 	 * Configure and start the application.
-	 * 
-	 * @param args
-	 *            not used
+	 * @param args not used
 	 */
 	public static void main(String[] args) {
 		MoneyFactory.setFactory(Reader.read());

@@ -1,11 +1,8 @@
 package coinpurse;
 
-import sun.util.logging.resources.logging;
-
 /**
  * A banknote monetary value and currency
  * @author Pimwalun Witchawanitchanun
- *
  */
 public class BankNote extends Money {
 	private long serialNumber;

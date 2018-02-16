@@ -3,13 +3,12 @@ package coinpurse;
 /**
  * This class create coin and banknote of Thailand.
  * @author Pimwalun Witchawanitchanun
- *
  */
 public class ThaiMoneyFactory extends MoneyFactory {
 
 	private static final String DEFAULT_CURRENCY = "Baht";
 	private static final String DIME_CURRENCY = "Satang";
-	public long nextSerialNumber = 1000000;
+	private long nextSerialNumber = 1000000;
 	private double[] thaiMoney = { 0.25, 0.5, 1, 2, 5, 10, 20, 50, 100, 500, 1000 };
 
 	/**

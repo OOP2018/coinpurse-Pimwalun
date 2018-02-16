@@ -7,7 +7,6 @@ import java.util.List;
 /**
  * This class is to sort and compare coins currency.
  * @author Pimwalun Witchawanitchanun
- *
  */
 public class MoneyUtil {
 	
