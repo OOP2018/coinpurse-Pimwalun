@@ -24,6 +24,7 @@ public class PurseTest {
 	/** tolerance for comparing two double values */
 	private static final double TOL = 1.0E-6;
 	private static final String CURRENCY = "Baht";
+	private MoneyFactory moneyFactory = MoneyFactory.getInstance();
 	
     /**
      * Sets up the test fixture.
@@ -35,8 +36,12 @@ public class PurseTest {
     }
     
     /** Make a coin with the default currency. To save typing "new Coin(...)" */
-    private Coin makeCoin(double value) {
-		return new Coin(value,CURRENCY);
+    private Valuable makeCoin(double value) {
+		return moneyFactory.createMoney(value);
+	}
+    
+    private Valuable makeBankNote(double value) {
+		return moneyFactory.createMoney(value);
 	}
 
     /** Easy test that the Purse constructor is working. */
@@ -56,9 +61,9 @@ public class PurseTest {
     public void testInsert()
     {
         Purse purse = new Purse(3);
-        Coin coin1 = makeCoin(5);
-        Coin coin2 = makeCoin(10);
-        Coin coin3 = makeCoin(1);
+        Valuable coin1 = makeCoin(5);
+        Valuable coin2 = makeCoin(10);
+        Valuable coin3 = makeCoin(1);
         assertTrue( purse.insert(coin1));
         assertTrue( purse.insert(coin3));
         assertTrue( purse.insert(coin2));
@@ -73,7 +78,7 @@ public class PurseTest {
     public void testInsertNoValue()
     {
         Purse purse = new Purse(3);
-        Coin fakeCoin = new Coin(0, CURRENCY);
+        Valuable fakeCoin = new Coin(0, CURRENCY);
         assertFalse( purse.insert(fakeCoin) );
     }
 

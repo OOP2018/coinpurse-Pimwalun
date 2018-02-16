@@ -60,10 +60,10 @@ public class MoneyUtil {
     		values.add(new Coin(1.0, "Baht"));
     		values.add(new Coin(1.0, "Dollar"));
     		values.add(new Coin(2.0, "ht"));
-    		values.add(new BankNote(1000.0, "Yen"));
-    		values.add(new BankNote(50.0, "Yuan"));
-    		values.add(new BankNote(100.0, "Baht"));
-    		values.add(new BankNote(20.0, "ht"));
+//    		values.add(new BankNote(1000.0, "Yen"));
+//    		values.add(new BankNote(50.0, "Yuan"));
+//    		values.add(new BankNote(100.0, "Baht"));
+//    		values.add(new BankNote(20.0, "ht"));
     		printCoin(values);
     		Collections.sort(values, new ValueComparator());
     		System.out.println("==========================");
