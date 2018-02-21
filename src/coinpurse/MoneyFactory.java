@@ -37,7 +37,7 @@ public abstract class MoneyFactory {
 			newValues = Double.parseDouble(value);
 		} catch (NumberFormatException e) {
 			throw new IllegalArgumentException("Value is not a valid number", e);
-		}
+		} 
 		return createMoney(newValues);
 	}
 	

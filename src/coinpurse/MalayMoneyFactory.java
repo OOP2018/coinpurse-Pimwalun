@@ -31,7 +31,7 @@ public class MalayMoneyFactory extends MoneyFactory {
 	
 	public static void main(String[] args) {
 		
-		MoneyFactory m = new MalayMoneyFactory();
+		MoneyFactory m = new MalayMoneyFactory(); 
 		MoneyFactory.setFactory(m);
 		Valuable v1 = m.createMoney(0.5);
 		System.out.println(v1.toString());
