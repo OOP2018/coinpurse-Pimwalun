@@ -17,16 +17,15 @@ public class MalayMoneyFactory extends MoneyFactory {
 	 */
 	@Override
 	public Valuable createMoney(double value) {
-		Valuable valuable = null;
 		for (double m : malayMoney) {
 			if (value == m) {
-				if (m >= 1) {
-					valuable = new BankNote(m, DEFAULT_CURRENCY, nextSerialNumber++);
-				} else if (m < 1) {
-					valuable = new Coin(m * 100, DIME_CURRENCY);
+				if (value >= 1) {
+					return new BankNote(value, DEFAULT_CURRENCY, nextSerialNumber++);
+				} else if (value < 1) {
+					return new Coin(value * 100, DIME_CURRENCY);
 				} 
-			}
+			} 
 		}
-		return valuable;
+		throw new IllegalArgumentException("Sorry, " + value + " is not a valid amount.");
 	}
 }

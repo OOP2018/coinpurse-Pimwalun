@@ -13,7 +13,7 @@ public abstract class MoneyFactory {
 	 */
 	public static MoneyFactory getInstance() {
 		if (factory == null) {
-			factory = Reader.read();
+			factory = Main.read();
 		}
 		return factory;
 	}
@@ -35,8 +35,8 @@ public abstract class MoneyFactory {
 		double newValues = 0.0;
 		try {
 			newValues = Double.parseDouble(value);
-		} catch (IllegalArgumentException e) {
-			throw new IllegalArgumentException("Value is not a valid number");
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException("Value is not a valid number", e);
 		}
 		return createMoney(newValues);
 	}

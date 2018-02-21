@@ -18,18 +18,27 @@ public class ThaiMoneyFactory extends MoneyFactory {
 	 */
 	@Override
 	public Valuable createMoney(double value) {
-		Valuable valuable = null;
 		for (double m : thaiMoney) {
 			if (value == m) {
 				if (value >= 20) {
-					valuable = new BankNote(value, DEFAULT_CURRENCY, nextSerialNumber++);
+					return new BankNote(value, DEFAULT_CURRENCY, nextSerialNumber++);
 				} else if (value >= 1 && value < 20) {
-					valuable = new Coin(value, DEFAULT_CURRENCY);
+					return new Coin(value, DEFAULT_CURRENCY);
 				} else if (value < 1) {
-					valuable = new Coin(value * 100, DIME_CURRENCY);
+					return new Coin(value * 100, DIME_CURRENCY);
 				} 
-			}
+			} 
 		}
-		return valuable;
+		throw new IllegalArgumentException("Sorry, " + value + " is not a valid amount.");
+	}
+	
+	public static void main(String[] args) {
+		MoneyFactory m = MoneyFactory.getInstance();
+		Valuable v1 = m.createMoney(5);
+		System.out.println(v1.toString());
+		Valuable v2 = m.createMoney(20);
+		System.out.println(v2.toString());
+		Valuable v3 = m.createMoney(40);
+		System.out.println(v3.toString());
 	}
 }

@@ -92,7 +92,7 @@ public class ConsoleDialog {
 			try {
 				valuable = makeMoney(value);
 			} catch (IllegalArgumentException ex) {
-				System.out.println("Sorry, "+value+" is not a valid amount.");
+				System.out.println("Sorry, " + value + " is not a valid amount.");
 			    continue;
 			}
 			System.out.printf("Deposit %s... ", valuable.toString());
