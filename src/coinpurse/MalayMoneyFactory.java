@@ -28,4 +28,16 @@ public class MalayMoneyFactory extends MoneyFactory {
 		}
 		throw new IllegalArgumentException("Sorry, " + value + " is not a valid amount.");
 	}
+	
+	public static void main(String[] args) {
+		
+		MoneyFactory m = new MalayMoneyFactory();
+		MoneyFactory.setFactory(m);
+		Valuable v1 = m.createMoney(0.5);
+		System.out.println(v1.toString());
+		Valuable v2 = m.createMoney(20);
+		System.out.println(v2.toString());
+		Valuable v3 = m.createMoney(40);
+		System.out.println(v3.toString());
+	}
 }

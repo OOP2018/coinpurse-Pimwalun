@@ -13,7 +13,7 @@ public abstract class MoneyFactory {
 	 */
 	public static MoneyFactory getInstance() {
 		if (factory == null) {
-			factory = Main.read();
+			factory = new ThaiMoneyFactory();
 		}
 		return factory;
 	}
