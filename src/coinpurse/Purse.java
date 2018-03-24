@@ -2,6 +2,10 @@ package coinpurse;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import coinpurse.strategy.GreedyWithdraw;
+import coinpurse.strategy.WithdrawStrategy;
+
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -24,6 +28,7 @@ public class Purse {
      */
     private final int capacity;
     private static final String CURRENCY = "Baht";
+    private WithdrawStrategy strategy;
     
     /** 
      *  Create a purse with a specified capacity.
@@ -31,6 +36,7 @@ public class Purse {
      */
     public Purse( int capacity ) {
     		this.capacity = capacity;
+    		strategy = new GreedyWithdraw();
     }
 
     /**
@@ -111,25 +117,34 @@ public class Purse {
 	 *    or null if cannot withdraw requested amount.
      */
     public Valuable[] withdraw( Valuable amount ) {
-		List<Valuable> templist = new ArrayList<>();
-		Collections.sort( money, comp);
-		Collections.reverse( money );
-		double amount1 = amount.getValue();
-		if (amount1 < 0) return null;
-		for (Valuable value : money) {
-			if (amount1 >= value.getValue() && value.getCurrency().equalsIgnoreCase(amount.getCurrency())){
-				amount1-= value.getValue();
-				templist.add(value);
-			}
-		}
-		if (amount1!= 0) return null;
+    		List<Valuable> templist = strategy.withdraw(amount, money);
+		if (templist == null) return null;
 		for (Valuable valueToWithdraw : templist) {
 			money.remove(valueToWithdraw);
 		}
-		if (getBalance() < amount1) return null;
 		Valuable [] array = new Valuable[templist.size()];
 		templist.toArray(array);
-		return array; 
+		return array;
+//    	if (amount.getValue() <= 0) return null;
+//    	Collections.sort( money, comp);
+//    	Collections.reverse( money );
+//		double amount1 = amount.getValue();
+//		if (amount1 < 0) return null;
+//		for (Valuable value : money) {
+//			if (amount1 >= value.getValue() && value.getCurrency().equalsIgnoreCase(amount.getCurrency())){
+//				amount1-= value.getValue();
+//				templist.add(value);
+//			}
+//		}
+//		if (amount1!= 0) return null;
+//		for (Valuable valueToWithdraw : templist) {
+//			money.remove(valueToWithdraw);
+//		}
+//		if (getBalance() < amount.getValue()) return null;
+//		Valuable [] array = new Valuable[templist.size()];
+//		templist.toArray(array);
+//		return array;
+		
     }
   
     /** 
@@ -138,6 +153,14 @@ public class Purse {
      */
     public String toString() {
     		return count() + " money with value " + getBalance();
+    }
+    
+    /**
+     * 
+     * @param strategy
+     */
+    public void setWithDrawStrategy(WithdrawStrategy strategy){
+    		this.strategy = strategy;
     }
     
     public static void main(String[] args) {
