@@ -10,6 +10,11 @@ import coinpurse.Coin;
 import coinpurse.MoneyFactory;
 import coinpurse.Valuable;
 
+/**
+ * Test the WithdrawStrategy using JUnit. This is a JUnit 4 test suite.
+ * @author Pimwalun Witchawanitchanun
+ *
+ */
 public class WithdrawTest {
 	private WithdrawStrategy strategy;
 	private static MoneyFactory mf = MoneyFactory.getInstance();
@@ -18,7 +23,6 @@ public class WithdrawTest {
 	
 	@Before
 	public void setUp() {
-//		money.clear();
 		strategy = new RecursiveWithdraw();
 	}
 

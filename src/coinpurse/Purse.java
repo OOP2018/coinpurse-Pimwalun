@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import coinpurse.strategy.GreedyWithdraw;
+import coinpurse.strategy.RecursiveWithdraw;
 import coinpurse.strategy.WithdrawStrategy;
 
 import java.util.Collections;
@@ -28,6 +29,7 @@ public class Purse {
      */
     private final int capacity;
     private static final String CURRENCY = "Baht";
+    /** The strategy for withdrawing items */
     private WithdrawStrategy strategy;
     
     /** 
@@ -125,7 +127,7 @@ public class Purse {
 		Valuable [] array = new Valuable[templist.size()];
 		templist.toArray(array);
 		return array;
-//    	if (amount.getValue() <= 0) return null;
+		
 //    	Collections.sort( money, comp);
 //    	Collections.reverse( money );
 //		double amount1 = amount.getValue();
@@ -156,8 +158,8 @@ public class Purse {
     }
     
     /**
-     * 
-     * @param strategy
+     * Set strategy to another object that come from implements WithdrawStrategy.
+     * @param strategy is another object that come from implements WithdrawStrategy.
      */
     public void setWithDrawStrategy(WithdrawStrategy strategy){
     		this.strategy = strategy;
