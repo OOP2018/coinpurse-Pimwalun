@@ -5,7 +5,19 @@ package coinpurse;
  * @author Pimwalun Witchawanitchanun
  */
 public class BankNote extends Money {
+	private static long nextSerialNumber = 100000;
 	private long serialNumber;
+	
+	/**
+	 * A banknote with given value and currency.
+	 * @param value is value of banknote.
+	 * @param currency is currency of banknote.
+	 */
+	public BankNote(double value, String currency) {
+		super(value, currency);
+		this.serialNumber = nextSerialNumber++;
+	}
+	
 	/**
 	 * A banknote with given value and currency.
 	 * @param value is value of banknote.
