@@ -26,6 +26,7 @@ public class GreedyWithdraw implements WithdrawStrategy{
 	public List<Valuable> withdraw(Valuable amount, List<Valuable> items) {
 		List<Valuable> templist = new ArrayList<>();
 		Collections.sort( items);
+		Collections.reverse(items);
 		double amount1 = amount.getValue();
 		if (amount1 <= 0) return null;
 		for (Valuable value : items) {

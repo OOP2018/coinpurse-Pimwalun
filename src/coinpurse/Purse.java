@@ -119,6 +119,9 @@ public class Purse {
 	 *    or null if cannot withdraw requested amount.
      */
     public Valuable[] withdraw( Valuable amount ) {
+    		if (this.getBalance() < 0) return null;
+    		if (amount.getValue() < 0) return null;
+    		if (amount.getValue() > this.getBalance()) return null;
     		List<Valuable> templist = strategy.withdraw(amount, money);
 		if (templist == null) return null;
 		for (Valuable valueToWithdraw : templist) {
