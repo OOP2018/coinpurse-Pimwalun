@@ -59,7 +59,8 @@ public class MoneyUtil {
 		try {
 			max = args[0];
 			for (E aE : args) {
-				if( aE.compareTo(max) > 0 ) return max = aE;
+				if( aE.compareTo(max) > 0 ) 
+					max = aE;
 			}
 		} catch (NullPointerException e) {
 			throw new IllegalArgumentException();
